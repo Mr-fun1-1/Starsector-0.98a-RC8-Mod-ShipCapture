@@ -13,19 +13,16 @@ hackSpreadRange,Hack chain spread range,Int,2000,,Range around a captured ship o
 hackSpreadPct,Hack chain progress fraction,Double,0.15,,Base spread progress (final = this x target size multiplier / captured size multiplier).,0.01,1,Hacking
 hackLockTransferPct,Lost target progress transfer,Double,0.6,,Fraction of progress transferred to a new target when the locked target is destroyed or lost.,0.05,1,Hacking
 hackCooldownBaseSec,Hack cooldown base time,Double,5,,Base hack cooldown in seconds after a successful capture (cooldown = this x size multiplier / locking arrays).,1,60,Hacking
-hackOmegaAllowed,Hacking Terminal: hack Tesseract ships,Boolean,false,,When ON, the Hacking Array can target Tesseract (Omega) ships and other ships of the same faction; when OFF, Omega ships are excluded entirely (default).,,,,Hacking
-arrayOpFrigate,Hacking Array OP cost - Frigate,Int,8,,Ordnance points the Hacking Array hull mod costs on frigates (applies after restarting the game).,0,100,Hacking
-arrayOpDestroyer,Hacking Array OP cost - Destroyer,Int,15,,Ordnance points the Hacking Array hull mod costs on destroyers (applies after restarting the game).,0,100,Hacking
-arrayOpCruiser,Hacking Array OP cost - Cruiser,Int,22,,Ordnance points the Hacking Array hull mod costs on cruisers (applies after restarting the game).,0,100,Hacking
-arrayOpCapital,Hacking Array OP cost - Capital,Int,30,,Ordnance points the Hacking Array hull mod costs on capital ships (applies after restarting the game).,0,100,Hacking
+hackOmegaAllowed,Hacking Array: allow hacking Tesseract ships,Boolean,false,,When ON, the Hacking Array can target Tesseract (Omega) ships and other ships of the same faction; their hack speed is scaled by the Hack Omega speed multiplier. When OFF, Omega ships are excluded entirely (default).,,,,Hacking
+arrayOpFrigate,Hacking Array OP cost - Frigate,Int,8,,Ordnance points the Hacking Array hull mod costs on frigates; destroyer/cruiser/capital costs derive automatically (x1.9 / x2.8 / x3.8). Applies after restarting the game.,0,100,Hacking
+hackOmegaSpeedMult,Hack Omega speed multiplier,Double,0.5,,Progress-rate multiplier for hacking Tesseract (Omega) ships; only active when the Hacking Array toggle for Tesseract ships is ON. 0.05~1, lower = slower, 1 = same speed as normal unmanned ships.,0.05,1,Hacking
 cap_header_boarding,Boarding Pod Settings,Header,Boarding Pod Settings,,,,,Boarding
 boardingRange,Boarding contact distance,Int,120,,Distance within which a boarding fighter counts a successful touch.,20,800,Boarding
 boardingEngageRange,Boarding max engagement range,Int,4000,,Max engagement range of the Boarding Pod (including player R-key locked target override).,500,10000,Boarding
-boardingHitsFrigate,Hits needed for frigate,Int,25,,Successful boarding touches needed to capture a frigate.,1,500,Boarding
-boardingHitsDestroyer,Hits needed for destroyer,Int,38,,Successful boarding touches needed to capture a destroyer.,1,500,Boarding
-boardingHitsCruiser,Hits needed for cruiser,Int,63,,Successful boarding touches needed to capture a cruiser.,1,500,Boarding
-boardingHitsCapital,Hits needed for capital,Int,100,,Successful boarding touches needed to capture a capital.,1,500,Boarding
+boardingHitsFrigate,Boarding hits to capture a frigate,Int,25,,Successful boarding touches needed to capture a frigate; destroyer/cruiser/capital requirements derive automatically (x1.5 / x2.5 / x4.0).,1,200,Boarding
 ghostReturnFrac,Sunk return fraction,Double,0.5,,When a boarded target is destroyed, expected one-shot fighters = floor(hits x this fraction); carrier layout is then chosen by rounding expected / (bays x fighters per wing).,0.05,1,Boarding
+boardPhasedAllowed,Boarding phased targets,Boolean,false,,Whether Boarding Pod fighters can count boarding hits against phased (phase-cloaked) target ships. OFF (default) = phased targets cannot be boarded.,,,,Boarding
+boardOmniShieldAllowed,Boarding all-shield targets,Boolean,true,,Whether Boarding Pod fighters can count boarding hits against targets with an all-direction (OMNI) shield raised. ON (default) = allowed.,,,,Boarding
 wingBaseValue,Wing market value,Int,20000,,Market value of the Boarding Pod fighter wing (price; applies after restarting the game).,1000,100000,Boarding
 wingOpCost,Wing ordnance points,Int,15,,Ordnance points to equip a Boarding Pod wing on a carrier (applies after restarting the game).,0,100,Boarding
 wingFighterCount,Fighters per wing,Int,3,,Number of fighters per Boarding Pod wing (applies after restarting the game).,1,6,Boarding
@@ -58,4 +55,4 @@ cap_header_transition,Capture Transition & Repair Settings,Header,Capture Transi
 captureDelaySec,Boarding capture transition time,Double,10,,Paralysis duration in seconds once boarding requirements are met (immune to targeting, then captured). Follows battle speed.,1,60,Transition
 captureDelayHackSec,Hack capture transition time,Double,5,,Paralysis duration in seconds once hack progress hits 100%%. Follows battle speed.,1,60,Transition
 captureRepairRatePerSec,Post-capture repair rate,Double,0.005,,Hull structure fraction repaired per second after capture (of max structure).,0.001,0.1,Transition
-captureRepairCount,Post-capture repair ticks,Int,40,,Number of post-capture repair ticks (one per second, then stops; total repair = 0.5% x ticks).,1,200,Transition
+captureRepairCount,Post-capture repair ticks,Int,40,,Number of post-capture repair ticks (one per second, then stops; total repair = 0.5%% x ticks).,1,200,Transition

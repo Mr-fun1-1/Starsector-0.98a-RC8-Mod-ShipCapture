@@ -11,9 +11,6 @@
         "sizeMultCapital": 0.2,
         "boardingRange": 120,
         "boardingHitsFrigate": 25,
-        "boardingHitsDestroyer": 38,
-        "boardingHitsCruiser": 63,
-        "boardingHitsCapital": 100,
         "malfDuration40": 2.5,
         "malfDuration70": 4,
         "malfMajorHullDamageFrac": 0.05,
@@ -41,9 +38,6 @@
         "ghostReturnFrac": 0.5,
         "hackOmegaAllowed": false,
         "arrayOpFrigate": 8,
-        "arrayOpDestroyer": 15,
-        "arrayOpCruiser": 22,
-        "arrayOpCapital": 30,
         "wingBaseValue": 20000,
         "wingOpCost": 15,
         "wingFighterCount": 3,
@@ -55,6 +49,9 @@
         "wingHitpoints": 350,
         "wingArmor": 75,
         "wingFluxCapacity": 300,
-        "wingFluxDissipation": 75
+        "wingFluxDissipation": 75,
+        "hackOmegaSpeedMult": 0.5,
+        "boardPhasedAllowed": false,
+        "boardOmniShieldAllowed": true
     }
 }
