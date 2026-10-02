@@ -53,3 +53,20 @@ All values live in `data/config/modSettings.json` -> `CaptureSettings` (restart 
 - The Boarding Driver Core must be installed on at least one of your ships (0 OP, any ship) for boarding malfunctions to trigger; multiple installations do not stack.
 - Transition/repair timing uses engine time (follows battle speed: at 2x speed the boarding transition takes 5s, hacking 2.5s).
 - Known limitation: hullmods are not driven by the engine while the battle is in fleet-control (strategy) mode all the way; captures completed in that mode may skip the transition animation (final ownership is unaffected). It recovers after entering combat mode once.
+
+## General Settings & Presets (LunaLib "Preset Slots" tab)
+
+### Enemy ships can install this mod's hullmods/wings (enemyCanUse, default ON)
+- ON (default): enemy ships equipped with this mod's hullmods/wings work from the enemy perspective - enemy Hacking Arrays hack YOUR unmanned ships, enemy Boarding Pods board YOUR manned ships, and captured ships go to the ENEMY.
+  Note: vanilla enemies have no way to obtain these hullmods/wings (no blueprint/trade spread). The default ON mainly reserves symmetric gameplay for players using mods that spread equipment, or for custom enemy loadouts. Turn it OFF if you do not want enemies to capture your ships.
+- OFF: this mod's hullmods on enemy ships are inert (only player-side ships are affected).
+
+### Preset save / load
+Use the toggle + 5 fixed slots (presets_1 ~ presets_5) scheme:
+1. Select a slot: enable the matching "Slot N selected" toggle in the Preset Slots tab (if multiple slots are ON, the lowest-numbered one is used).
+2. Save: turn ON "Save preset toggle", then click Save All. Within ~1s the mod writes the whole configuration to <mod root>/presets saves/presets_<n>.json; the log shows "preset saved to slot N". Turn the toggle OFF after saving; re-enable to save again.
+   Note: presets never store the preset-related toggles (Save preset / Load preset / Slot N selected) - those stay OFF no matter their current state when a preset is applied.
+3. Load: turn ON "Load preset toggle", then click Save All. The mod applies the selected slot immediately (combat attributes at once; static items such as OP cost / market value fully apply after a game restart) and persists it into modSettings.json. Turn the toggle OFF after loading.
+4. Guard: if both toggles are ON or both OFF, nothing happens; with no slot selected, only a log hint is printed.
+
+Presets are stored in the <mod root>/presets saves/ folder (one .json per slot; delete a file to clear that slot). The EN version keeps its own preset folder.

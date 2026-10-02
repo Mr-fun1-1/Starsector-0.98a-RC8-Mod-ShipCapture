@@ -58,3 +58,11 @@ captureDelaySec,Boarding capture transition time,Double,10,,Paralysis duration i
 captureDelayHackSec,Hack capture transition time,Double,5,,Paralysis duration in seconds once hack progress hits 100%%. Follows battle speed.,1,60,Transition
 captureRepairRatePerSec,Post-capture repair rate,Double,0.005,,Hull structure fraction repaired per second after capture (of max structure).,0.001,0.1,Transition
 captureRepairCount,Post-capture repair ticks,Int,40,,Number of post-capture repair ticks (one per second, then stops; total repair = 0.5%% x ticks).,1,200,Transition
+enemyCanUse,Enemy ships can install and use this mod hullmods/wings,Boolean,true,,When enabled (default), enemy ships equipped with these hullmods/wings work from the enemy perspective (hack your unmanned ships, board your manned ships, captured ships go to the enemy); when disabled, only player-side ships are affected.,,,,Preset Slots
+presetSaveEnabled,Save preset toggle,Boolean,false,,When ON, the next Save All writes the mod current settings into the selected slot (turn OFF after saving; re-enable to save again).,,,,Preset Slots
+presetLoadEnabled,Load preset toggle,Boolean,false,,When ON, the next Save All overwrites the mod current settings from the selected slot (static items such as OP cost / market value fully apply after a game restart; turn OFF after loading).,,,,Preset Slots
+presetSlot1,Slot 1 selected,Boolean,false,,Enable to select slot 1 (if multiple slots are ON, the lowest-numbered one is used).,,,,Preset Slots
+presetSlot2,Slot 2 selected,Boolean,false,,Enable to select slot 2 (if multiple slots are ON, the lowest-numbered one is used).,,,,Preset Slots
+presetSlot3,Slot 3 selected,Boolean,false,,Enable to select slot 3 (if multiple slots are ON, the lowest-numbered one is used).,,,,Preset Slots
+presetSlot4,Slot 4 selected,Boolean,false,,Enable to select slot 4 (if multiple slots are ON, the lowest-numbered one is used).,,,,Preset Slots
+presetSlot5,Slot 5 selected,Boolean,false,,Enable to select slot 5 (if multiple slots are ON, the lowest-numbered one is used).,,,,Preset Slots
