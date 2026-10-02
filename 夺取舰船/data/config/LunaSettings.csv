@@ -1,0 +1,61 @@
+fieldID,fieldName,fieldType,defaultValue,secondaryValue,fieldDescription,minValue,maxValue,tab
+cap_header_hack,骇入阵列设置,Header,骇入阵列设置,,,,,骇入
+hackRange,骇入有效范围,Int,2600,,骇入阵列锁定目标的最大距离（单位：游戏内距离单位）。,500,5000,骇入
+hackBaseRatePerSec,骇入基础速率（每秒）,Double,0.02,,骇入每秒基础进度（电子战持平时约 50 秒夺取一艘护卫舰）。,0.001,1,骇入
+ewMultPerPoint,电子战系数增量,Double,1,,电子战差值每 1.0 点对应的骇入速度系数增量。系数 = 1 + 差值 × 本值。,0.1,5,骇入
+ewMultMin,电子战系数下限,Double,0.25,,骇入电子战速度系数的下限。,0.05,1,骇入
+ewMultMax,电子战系数上限,Double,5,,骇入电子战速度系数的上限。,1,10,骇入
+sizeMultFrigate,护卫舰大小系数,Double,1,,目标为护卫舰时的骇入速度系数（目标越大夺取越慢）。,0.05,5,骇入
+sizeMultDestroyer,驱逐舰大小系数,Double,0.6,,目标为驱逐舰时的骇入速度系数。,0.05,5,骇入
+sizeMultCruiser,巡洋舰大小系数,Double,0.35,,目标为巡洋舰时的骇入速度系数。,0.05,5,骇入
+sizeMultCapital,主力舰大小系数,Double,0.2,,目标为主力舰时的骇入速度系数。,0.05,5,骇入
+hackSpreadRange,夺取连锁扩散范围,Int,2000,,成功骇入夺取后，对其他可骇入目标的连锁进度传播范围。,200,5000,骇入
+hackSpreadPct,夺取连锁进度比例,Double,0.15,,连锁传播的基础进度比例（最终 = 本值 × 目标大小系数 ÷ 被夺舰大小系数）。,0.01,1,骇入
+hackLockTransferPct,目标失效进度转移比例,Double,0.6,,锁定目标被击毁或失效时转移给新目标的进度比例。,0.05,1,骇入
+hackCooldownBaseSec,骇入冷却基础时长,Double,5,,成功夺取后的骇入冷却基础时长（秒）：冷却 = 本值 × 目标大小系数 ÷ 锁定该目标的阵列数。,1,60,骇入
+hackOmegaAllowed,骇入终端：允许骇入超体类舰船,Boolean,false,,开启后骇入阵列可将超体（Tesseract）及其同派系（欧米伽）舰船作为骇入目标；关闭时超体类整体排除（默认关闭）。,,,,骇入
+arrayOpFrigate,骇入阵列装配点数·护卫舰,Int,8,,骇入阵列船体插件在护卫舰上的装配点数消耗（改后重启游戏生效）。,0,100,骇入
+arrayOpDestroyer,骇入阵列装配点数·驱逐舰,Int,15,,骇入阵列船体插件在驱逐舰上的装配点数消耗（改后重启游戏生效）。,0,100,骇入
+arrayOpCruiser,骇入阵列装配点数·巡洋舰,Int,22,,骇入阵列船体插件在巡洋舰上的装配点数消耗（改后重启游戏生效）。,0,100,骇入
+arrayOpCapital,骇入阵列装配点数·主力舰,Int,30,,骇入阵列船体插件在主力舰上的装配点数消耗（改后重启游戏生效）。,0,100,骇入
+cap_header_boarding,跳帮舱设置,Header,跳帮舱设置,,,,,跳帮
+boardingRange,跳帮接触判定距离,Int,120,,跳帮战机贴近目标到此距离内判定一次成功接触。,20,800,跳帮
+boardingEngageRange,跳帮舱最大交战距离,Int,4000,,跳帮舱（含优先锁定玩家 R 键目标）的最大交战距离，超过不生效。,500,10000,跳帮
+boardingHitsFrigate,夺取护卫舰所需接触次数,Int,25,,跳帮夺取护卫舰所需成功接触次数。,1,500,跳帮
+boardingHitsDestroyer,夺取驱逐舰所需接触次数,Int,38,,跳帮夺取驱逐舰所需成功接触次数。,1,500,跳帮
+boardingHitsCruiser,夺取巡洋舰所需接触次数,Int,63,,跳帮夺取巡洋舰所需成功接触次数。,1,500,跳帮
+boardingHitsCapital,夺取主力舰所需接触次数,Int,100,,跳帮夺取主力舰所需成功接触次数。,1,500,跳帮
+ghostReturnFrac,击沉返还系数,Double,0.5,,带累计跳帮计数的目标被摧毁时，预期释放战机数 = 计数 x 本系数（向下取整）；生成单位为联队（每联队 3 架，超出预期的当场移除），实际释放架数 >= 预期。,0.05,1,跳帮
+wingBaseValue,联队市场价值,Int,20000,,跳帮舱战机联队的市场价值（售价；改后重启游戏生效）。,1000,100000,跳帮
+wingOpCost,联队装配点数,Int,15,,母舰装配跳帮舱联队消耗的装配点数（改后重启游戏生效）。,0,100,跳帮
+wingFighterCount,联队战机数量,Int,3,,每个跳帮舱联队的战机架数（改后重启游戏生效）。,1,6,跳帮
+wingMaxSpeed,战机战斗航速,Int,320,,跳帮舱战机最高航速（即时生效）。,50,1000,跳帮
+wingAcceleration,战机加速度,Int,350,,跳帮舱战机加速度（即时生效）。,50,2000,跳帮
+wingDeceleration,战机减速度,Int,250,,跳帮舱战机减速度（即时生效）。,50,2000,跳帮
+wingMinCrew,战机必要船员,Int,1,,跳帮舱战机所需最少船员（改后重启游戏生效）。,1,15,跳帮
+wingRefitTime,战机更换时间,Int,6,,跳帮舱联队战机更换（补给）时间（改后重启游戏生效）。,1,60,跳帮
+wingHitpoints,战机结构,Int,350,,跳帮舱战机船体结构值（即时生效）。,50,5000,跳帮
+wingArmor,战机装甲,Int,75,,跳帮舱战机装甲值（即时生效）。,10,2000,跳帮
+wingFluxCapacity,战机幅能容量,Int,300,,跳帮舱战机幅能容量（即时生效）。,50,5000,跳帮
+wingFluxDissipation,战机幅能耗散,Int,75,,跳帮舱战机幅能耗散（即时生效）。,10,1000,跳帮
+cap_header_malf,进度故障设置,Header,进度故障设置,,,,,故障系统
+malfCheckIntervalSec,骇入故障判定间隔,Double,5,,骇入进度达到阈值后的故障触发判定间隔（秒）。,1,30,故障系统
+malfChanceBase40,40%% 进度基础触发几率,Double,0.2,,进度 40%% 时的故障触发几率（骇入与跳帮共用公式起点）。,0.01,1,故障系统
+malfChancePerProgressPoint,每百分点几率增量,Double,0.01,,每超过 40%% 一个进度百分点增加的触发几率（跳帮侧固定为 1%%）。,0.001,0.1,故障系统
+malfDuration40,骇入故障时长（40%%~70%%）,Double,2.5,,骇入侧 40%% 至 70%% 进度区间触发的引擎/护盾故障持续时间（秒）。,0.5,30,故障系统
+malfDuration70,骇入故障时长（70%% 以上）,Double,4,,骇入侧 70%% 以上进度区间触发的引擎/护盾故障持续时间（秒）。,0.5,60,故障系统
+malfDuration40Weapon,骇入武器故障时长（40%%~70%%）,Double,8,,骇入侧 40%% 至 70%% 进度区间触发的武器故障持续时间（秒）。,0.5,60,故障系统
+malfDuration70Weapon,骇入武器故障时长（70%% 以上）,Double,16,,骇入侧 70%% 以上进度区间触发的武器故障持续时间（秒）。,0.5,120,故障系统
+malfBoardingCheckIntervalSec,跳帮故障判定间隔,Double,10,,跳帮驱动核心的故障触发判定间隔（秒）。,1,30,故障系统
+malfBoardingThreshold,跳帮故障触发阈值,Double,0.4,,跳帮进度达到该比例后才开始判定故障。,0.05,0.95,故障系统
+malfBoardingMajorThreshold,跳帮重大故障阈值,Double,0.7,,跳帮进度达到该比例后触发重大故障（持续翻倍并扣船体结构）。,0.1,1,故障系统
+malfBoardingDuration,跳帮引擎/护盾故障时长,Double,5,,跳帮侧引擎熄火或护盾失效故障的持续时间（秒）。,0.5,60,故障系统
+malfBoardingDurationWeapon,跳帮武器故障时长,Double,12,,跳帮侧武器锁死故障的持续时间（秒）。,0.5,120,故障系统
+malfBoardingMajorMult,跳帮重大故障时长倍数,Double,2,,跳帮重大故障的持续时间倍数（普通故障 × 本值）。,1,5,故障系统
+malfMajorHullDamageFrac,重大故障船体结构损失,Double,0.05,,重大故障导致的船体结构损失比例（最多不超过 50%%，且不会击毁目标）。,0.01,0.5,故障系统
+malfMajorHullDamageMinLevel,重大故障扣血下限,Double,0.15,,目标当前结构占比不高于该值时，重大故障不再减少其船体结构值。,0.01,0.9,故障系统
+cap_header_transition,夺取过渡与修复设置,Header,夺取过渡与修复设置,,,,,过渡与修复
+captureDelaySec,跳帮夺取过渡时长,Double,10,,跳帮满需求后目标的瘫痪过渡时长（秒），期间不被双方索敌，到时后正式夺取。随战斗倍速同步。,1,60,过渡与修复
+captureDelayHackSec,骇入夺取过渡时长,Double,5,,骇入进度满后目标的瘫痪过渡时长（秒），随战斗倍速同步。,1,60,过渡与修复
+captureRepairRatePerSec,夺取后修复速率,Double,0.005,,正式夺取后每秒修复的比例（占目标最大结构值）。,0.001,0.1,过渡与修复
+captureRepairCount,夺取后修复次数,Int,40,,夺取后缓慢修复的累计次数（每秒 +1，达到后停止，共修复 0.5%% × 次数）。,1,200,过渡与修复

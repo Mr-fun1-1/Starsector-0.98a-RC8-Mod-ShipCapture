@@ -1,0 +1,2 @@
+id,variant,tags,tier,rarity,fleet pts,op cost,formation,range,attackRunRange,attackPositionOffset,num,role,role desc,refit,base value,,,,,,,,,,,,,number
+sw_boarding_wing,sw_boarding_pod_wing,"bomber, fighter, sw_capture",2,,5,15,V,4000,100,600,3,BOMBER,Boarding Pod,6,20000,,,,,,,,,,,,,7
