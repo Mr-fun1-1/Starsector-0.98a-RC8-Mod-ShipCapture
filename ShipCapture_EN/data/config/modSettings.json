@@ -52,6 +52,8 @@
         "wingFluxDissipation": 75,
         "hackOmegaSpeedMult": 0.5,
         "boardPhasedAllowed": false,
-        "boardOmniShieldAllowed": true
+        "boardOmniShieldAllowed": true,
+        "malfBoardingDurationShield": 5.0,
+        "hackStackPowerBase": 2.0
     }
 }

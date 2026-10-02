@@ -16,6 +16,7 @@ hackCooldownBaseSec,Hack cooldown base time,Double,5,,Base hack cooldown in seco
 hackOmegaAllowed,Hacking Array: allow hacking Tesseract ships,Boolean,false,,When ON, the Hacking Array can target Tesseract (Omega) ships and other ships of the same faction; their hack speed is scaled by the Hack Omega speed multiplier. When OFF, Omega ships are excluded entirely (default).,,,,Hacking
 arrayOpFrigate,Hacking Array OP cost - Frigate,Int,8,,Ordnance points the Hacking Array hull mod costs on frigates; destroyer/cruiser/capital costs derive automatically (x1.9 / x2.8 / x3.8). Applies after restarting the game.,0,100,Hacking
 hackOmegaSpeedMult,Hack Omega speed multiplier,Double,0.5,,Progress-rate multiplier for hacking Tesseract (Omega) ships; only active when the Hacking Array toggle for Tesseract ships is ON. 0.05~1, lower = slower, 1 = same speed as normal unmanned ships.,0.05,1,Hacking
+hackStackPowerBase,Hack stack-power multiplier,Double,2,,Multiplier when several Hacking Arrays lock the same target: effect = base x mult^(n/(n+1)) (n = number of arrays locking that target).,1,5,Hacking
 cap_header_boarding,Boarding Pod Settings,Header,Boarding Pod Settings,,,,,Boarding
 boardingRange,Boarding contact distance,Int,120,,Distance within which a boarding fighter counts a successful touch.,20,800,Boarding
 boardingEngageRange,Boarding max engagement range,Int,4000,,Max engagement range of the Boarding Pod (including player R-key locked target override).,500,10000,Boarding
@@ -47,6 +48,7 @@ malfBoardingCheckIntervalSec,Boarding malfunction check interval,Double,10,,Inte
 malfBoardingThreshold,Boarding malfunction threshold,Double,0.4,,Boarding progress fraction at which malfunction rolls begin.,0.05,0.95,Malfunctions
 malfBoardingMajorThreshold,Boarding critical threshold,Double,0.7,,Boarding progress fraction at which critical malfunctions trigger (double duration and hull loss).,0.1,1,Malfunctions
 malfBoardingDuration,Boarding engine/shield fault duration,Double,5,,Duration in seconds of boarding engine flameout or shield failure faults.,0.5,60,Malfunctions
+malfBoardingDurationShield,Boarding shield-fault duration,Double,5,,Duration in seconds of the boarding shield malfunction (shield cannot raise); critical malfunction x2.,0.5,60,Faults
 malfBoardingDurationWeapon,Boarding weapon fault duration,Double,12,,Duration in seconds of boarding weapon lock faults.,0.5,120,Malfunctions
 malfBoardingMajorMult,Boarding critical duration multiplier,Double,2,,Duration multiplier for boarding critical malfunctions (normal fault x this).,1,5,Malfunctions
 malfMajorHullDamageFrac,Critical hull structure loss,Double,0.05,,Hull structure fraction lost on a critical malfunction (max 50%%, never destroys the target).,0.01,0.5,Malfunctions
