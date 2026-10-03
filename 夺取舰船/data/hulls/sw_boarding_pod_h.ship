@@ -1,0 +1,83 @@
+{
+    "bounds": [
+        18,
+        18,
+        -14,
+        -14,
+        -14,
+        18,
+        20,
+        -14,
+        8,
+        0
+    ],
+    "center": [
+        30,
+        35
+    ],
+    "collisionRadius": 32,
+    "coversColor": "",
+    "engineSlots": [
+        {
+            "angle": 180,
+            "contrailSize": 100,
+            "length": 30,
+            "location": [
+                -26,
+                13
+            ],
+            "style": "HIGH_TECH",
+            "width": 7
+        },
+        {
+            "angle": 180,
+            "contrailSize": 100,
+            "length": 30,
+            "location": [
+                -26,
+                -14
+            ],
+            "style": "HIGH_TECH",
+            "width": 7
+        }
+    ],
+    "height": 70,
+    "hullId": "sw_boarding_pod_h",
+    "hullName": "重型跳帮战机",
+    "hullSize": "FIGHTER",
+    "shieldCenter": [
+        0,
+        0
+    ],
+    "shieldRadius": 20,
+    "spriteName": "graphics/ships/sw_boarding_pod_h.png",
+    "style": "HIGH_TECH",
+    "viewOffset": 0,
+    "weaponSlots": [
+        {
+            "angle": 0,
+            "arc": 360,
+            "id": "WS 001",
+            "locations": [
+                3,
+                0
+            ],
+            "mount": "HIDDEN",
+            "size": "SMALL",
+            "type": "ENERGY"
+        },
+        {
+            "angle": 0,
+            "arc": 360,
+            "id": "WS 002",
+            "locations": [
+                -3,
+                0
+            ],
+            "mount": "HIDDEN",
+            "size": "SMALL",
+            "type": "ENERGY"
+        }
+    ],
+    "width": 60
+}

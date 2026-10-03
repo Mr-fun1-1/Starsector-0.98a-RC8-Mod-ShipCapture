@@ -45,7 +45,7 @@ All values live in `data/config/modSettings.json` -> `CaptureSettings` (restart 
 
 **Linked sliders (fewer redundant controls)**: only the frigate-tier values are exposed as sliders - `arrayOpFrigate` (Hacking Array OP on a frigate) and `boardingHitsFrigate` (boarding touches to capture a frigate). Other tiers derive automatically: destroyer x1.9 / cruiser x2.8 / capital x3.8 for OP cost, and destroyer x1.5 / cruiser x2.5 / capital x4.0 for boarding hits (rounded).
 
-**Mod Settings (LunaLib) items**: Hacking tab - `hackOmegaAllowed` (Hacking Array: allow hacking Tesseract ships), `hackOmegaSpeedMult` (0.05~1, hack-speed multiplier for Omega ships), `arrayOpFrigate`; Boarding tab - `boardPhasedAllowed`, `boardOmniShieldAllowed`, `boardingHitsFrigate`, `wingBaseValue` (20000), `wingOpCost` (15), `wingFighterCount` (3), `wingMaxSpeed` (320), `wingAcceleration` (350), `wingDeceleration` (250), `wingMinCrew` (1), `wingRefitTime` (6), `wingHitpoints` (350), `wingArmor` (75), `wingFluxCapacity` (300), `wingFluxDissipation` (75).
+**Mod Settings (LunaLib) items**: Hacking tab - `hackOmegaAllowed` (Hacking Array: allow hacking Tesseract ships), `hackOmegaSpeedMult` (0.05~1, hack-speed multiplier for Omega ships), `arrayOpFrigate`; Boarding tab - `boardPhasedAllowed`, `boardOmniShieldAllowed`, `boardingHitsFrigate`, `wingBaseValue` (20000), `wingOpCost` (15), `wingFighterCount` (3), `wingMaxSpeed` (320), `wingAcceleration` (350), `wingDeceleration` (250), `wingMinCrew` (1), `wingRefitTime` (6), `wingHitpoints` (350), `wingArmor` (75), `wingFluxCapacity` (300), `wingFluxDissipation` (75), `useCustomFighterSprite` (default **true**; ON = the Boarding Pod fighter uses this mod's custom pixel sprite, OFF = vanilla Wasp sprite; applies next frame; the custom sprite is also referenced directly by the ship data as a data-layer fallback, and the vanilla sprite is bundled as sw_boarding_pod_wasp.png).
 > Static data items (market value / OP cost / fighters per wing / min crew / refit time / Hacking Array OP, marked with ★) have no runtime API: the mod writes them back to the data files when you save, and they take effect **after restarting the game**. Combat-stat items (max speed / accel / decel / hull / armor / flux) take effect **immediately**.
 
 ## Notes
@@ -70,3 +70,32 @@ Use the toggle + 5 fixed slots (presets_1 ~ presets_5) scheme:
 4. Guard: if both toggles are ON or both OFF, nothing happens; with no slot selected, only a log hint is printed.
 
 Presets are stored in the <mod root>/presets saves/ folder (one .json per slot; delete a file to clear that slot). The EN version keeps its own preset folder.
+
+
+---
+
+## v3.0 Additions
+
+1. **Boarding CR bonus hits** (default ON): targets below 70%% CR gain a chance of +1 boarding hit every 3 seconds (10%% at 70%% CR, scaling linearly up to 50%% at 30%% CR or below). Tunable in Mod Settings "Boarding": `boardCrThreshold`, `boardCrChanceBase`, `boardCrMaxCr`, `boardCrMaxChance`, `boardCrIntervalSec`.
+2. **Marine consumption** (default ON): boarding contacts consume marines from player cargo (Light 5 / Medium 10 / Heavy 20). Simulations and one-shot fighters are exempt. Toggle: `boardMarinesEnabled`.
+3. **Hack CR / overload bonus** (default ON): below 70%% target CR, each hack progress tick gains bonus scaling linearly from 10%% (at 70%% CR) up to 50%% (at 30%% CR or below); overloaded targets gain an extra +20%% (`hackOverloadExtra`, toggle `hackOverloadEnabled`). Tunable in Mod Settings "Hacking".
+4. **Progress arc rendering** (default ON): boarding/hack progress is drawn as a colored arc around the target ship (orange boarding / cyan hacking). Turn off in Mod Settings "General" (`arcRenderEnabled`) to restore floating-text.
+5. **Capture blacklist**: add ship hull ids, one per line, to `<mod root>/夺取黑名单.txt` (`#` = comment, blank lines ignored). Blacklisted ships are excluded from both hacking and boarding. Reloads at mod start and every battle.
+6. **Battle-end backstop**: if the enemy has no surviving deployed ships for 10 seconds, the enemy fleet is ordered to retreat, preventing battles that cannot end normally.
+
+### New Mod Settings (defaults)
+| field | default | note |
+| --- | --- | --- |
+| boardCrThreshold | 0.7 | Boarding CR trigger threshold |
+| boardCrChanceBase | 0.1 | Boarding CR base chance |
+| boardCrMaxCr | 0.3 | Boarding CR chance cap CR |
+| boardCrMaxChance | 0.5 | Boarding CR max chance |
+| boardCrIntervalSec | 3 | Boarding CR roll interval (s) |
+| boardMarinesEnabled | true | Boarding consumes marines |
+| hackCrThreshold | 0.7 | Hack CR bonus threshold |
+| hackCrChanceBase | 0.1 | Hack CR base bonus |
+| hackCrMaxCr | 0.3 | Hack CR bonus cap CR |
+| hackCrMaxChance | 0.5 | Hack CR max bonus |
+| hackOverloadEnabled | true | Hack overload bonus toggle |
+| hackOverloadExtra | 0.2 | Hack overload extra bonus |
+| arcRenderEnabled | true | Progress arc rendering (off = text) |

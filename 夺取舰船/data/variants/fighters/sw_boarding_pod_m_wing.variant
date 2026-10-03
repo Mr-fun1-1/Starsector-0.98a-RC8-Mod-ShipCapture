@@ -1,7 +1,7 @@
 {
-    "displayName": "轻型跳帮战机",
-    "hullId": "sw_boarding_pod",
-    "variantId": "sw_boarding_pod_wing",
+    "displayName": "中型跳帮战机",
+    "hullId": "sw_boarding_pod_m",
+    "variantId": "sw_boarding_pod_m_wing",
     "fluxVents": 0,
     "fluxCapacitors": 0,
     "hullMods": [
@@ -12,7 +12,7 @@
         {
             "mode": "LINKED",
             "weapons": {
-                "WS 001": "irpulse_fighter"
+                "WS 001": "lightmg"
             }
         }
     ]

@@ -1,2 +1,4 @@
 id,variant,tags,tier,rarity,fleet pts,op cost,formation,range,attackRunRange,attackPositionOffset,num,role,role desc,refit,base value,,,,,,,,,,,,,number
-sw_boarding_wing,sw_boarding_pod_wing,"bomber, fighter, sw_capture",2,,5,15,V,4000,100,600,3,BOMBER,跳帮舱,6,20000,,,,,,,,,,,,,7
+sw_boarding_wing,sw_boarding_pod_wing,"bomber, fighter, sw_capture",2,,5,15,V,4000,100,600,3,BOMBER,轻型跳帮战机,6,20000,,,,,,,,,,,,,7
+sw_boarding_wing_m,sw_boarding_pod_m_wing,"bomber, fighter, sw_capture",2,,5,18,V,4000,100,600,3,BOMBER,中型跳帮战机,10,43000,,,,,,,,,,,,,7
+sw_boarding_wing_h,sw_boarding_pod_h_wing,"bomber, fighter, sw_capture",2,,5,25,V,4000,100,600,2,BOMBER,重型跳帮战机,15,80000,,,,,,,,,,,,,7

@@ -12,8 +12,8 @@
         0
     ],
     "center": [
-        9,
-        11
+        18,
+        21
     ],
     "collisionRadius": 15,
     "coversColor": "",
@@ -43,14 +43,14 @@
     ],
     "height": 21,
     "hullId": "sw_boarding_pod",
-    "hullName": "跳帮舱",
+    "hullName": "轻型跳帮战机",
     "hullSize": "FIGHTER",
     "shieldCenter": [
         1,
         0
     ],
     "shieldRadius": 25,
-    "spriteName": "graphics/ships/wasp_ftr.png",
+    "spriteName": "graphics/ships/sw_boarding_pod.png",
     "style": "HIGH_TECH",
     "viewOffset": 0,
     "weaponSlots": [

@@ -1,18 +1,20 @@
 {
-    "displayName": "轻型跳帮战机",
-    "hullId": "sw_boarding_pod",
-    "variantId": "sw_boarding_pod_wing",
+    "displayName": "Heavy Boarding Fighter",
+    "hullId": "sw_boarding_pod_h",
+    "variantId": "sw_boarding_pod_h_wing",
     "fluxVents": 0,
     "fluxCapacitors": 0,
     "hullMods": [
         "sw_boarding_pod",
+        "insulatedengine",
         "no_weapon_flux"
     ],
     "weaponGroups": [
         {
             "mode": "LINKED",
             "weapons": {
-                "WS 001": "irpulse_fighter"
+                "WS 001": "lightmg",
+                "WS 002": "lightmg"
             }
         }
     ]
