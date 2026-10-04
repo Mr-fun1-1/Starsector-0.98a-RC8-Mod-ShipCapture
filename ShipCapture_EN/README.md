@@ -5,6 +5,11 @@ A standalone Starsector mod (0.98a-RC8) that lets you seize enemy ships by hacki
 ## Install
 Put the folder into your `mods` directory and enable it in the launcher (game version 0.98a-RC8). **LunaLib** is an optional prerequisite: install and enable it (recommended) to get the in-game Mod Settings UI; without it the mod still runs with the defaults in `data/config/modSettings.json`. This folder is an English version for reference; the Chinese version used in-game is `mods\夺取舰船`.
 
+## Uninstalling (read before you delete the mod)
+> **WARNING: This mod is currently NOT safe to remove from an ongoing save.** Captured ships carry this mod's hullmods (Hacking Array / Boarding Driver Core) and fighter wings (Boarding Pod Light/Medium/Heavy) in their ship variants. If you delete the mod folder, those variants reference ids that no longer exist, which can break that save on load.
+> - To remove the mod safely: **start a new game** (recommended).
+> - A built-in safe-removal helper was attempted but did not work reliably in testing and has been removed. A working safe-removal solution may be provided in a future version.
+
 ## Contents
 
 ### 1. Hullmod: Hacking Array (`sw_capture_array`)
@@ -80,7 +85,7 @@ Presets are stored in the <mod root>/presets saves/ folder (one .json per slot; 
 2. **Marine consumption** (default ON): boarding contacts consume marines from player cargo (Light 5 / Medium 10 / Heavy 20). Simulations and one-shot fighters are exempt. Toggle: `boardMarinesEnabled`.
 3. **Hack CR / overload bonus** (default ON): below 70%% target CR, each hack progress tick gains bonus scaling linearly from 10%% (at 70%% CR) up to 50%% (at 30%% CR or below); overloaded targets gain an extra +20%% (`hackOverloadExtra`, toggle `hackOverloadEnabled`). Tunable in Mod Settings "Hacking".
 4. **Progress arc rendering** (default ON): boarding/hack progress is drawn as a colored arc around the target ship (orange boarding / cyan hacking). Turn off in Mod Settings "General" (`arcRenderEnabled`) to restore floating-text.
-5. **Capture blacklist**: add ship hull ids, one per line, to `<mod root>/夺取黑名单.txt` (`#` = comment, blank lines ignored). Blacklisted ships are excluded from both hacking and boarding. Reloads at mod start and every battle.
+5. **Capture blacklist**: add ship hull ids, one per line, to `<mod root>/capture_blacklist.txt` (`#` = comment, blank lines ignored). Blacklisted ships are excluded from both hacking and boarding. Reloads at mod start and every battle.
 6. **Battle-end backstop**: if the enemy has no surviving deployed ships for 10 seconds, the enemy fleet is ordered to retreat, preventing battles that cannot end normally.
 
 ### New Mod Settings (defaults)
