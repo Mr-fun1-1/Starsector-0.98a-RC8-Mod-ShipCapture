@@ -1,0 +1,12 @@
+{
+  "id": "sw_capture",
+  "name": "夺取舰船",
+  "author": "Doubao",
+  "version": "1.0.0",
+  "description": "添加船体插件「骇入阵列」：安装后随时间缓慢骇入并夺取敌方无人舰船的操控权。夺取速度取决于双方电子对抗强度差值与目标舰船大小。",
+  "gameVersion": "0.98a-RC8",
+  "jars": [
+    "jars/Capture.jar"
+  ],
+  "modPlugin": "org.sw.capture.ModPlugin"
+}

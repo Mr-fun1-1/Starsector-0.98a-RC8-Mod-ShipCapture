@@ -14,7 +14,6 @@ hackSpreadPct,Hack chain progress fraction,Double,0.15,,Base spread progress (fi
 hackLockTransferPct,Lost target progress transfer,Double,0.6,,Fraction of progress transferred to a new target when the locked target is destroyed or lost.,0.05,1,Hacking
 hackCooldownBaseSec,Hack cooldown base time,Double,5,,Base hack cooldown in seconds after a successful capture (cooldown = this x size multiplier / locking arrays).,1,60,Hacking
 arrayOpFrigate,Hacking Array OP cost - Frigate,Int,8,,Ordnance points the Hacking Array hull mod costs on frigates; destroyer/cruiser/capital costs derive automatically (x1.9 / x2.8 / x3.8). Applies after restarting the game.,0,100,Hacking
-hackOmegaSpeedMult,Hack Omega speed multiplier,Double,0.5,,Progress-rate multiplier for hacking Tesseract (Omega) ships; only active when the Hacking Array toggle for Tesseract ships is ON. 0.05~1, lower = slower, 1 = same speed as normal unmanned ships.,0.05,1,Hacking
 hackStackPowerBase,Hack stack-power multiplier,Double,2,,Multiplier when several Hacking Arrays lock the same target: effect = base x mult^(n/(n+1)) (n = number of arrays locking that target).,1,5,Hacking
 hackCrThreshold,Hack CR threshold,Double,0.7,,No hack-progress bonus while target CR is above this (default 70%%); below it, bonus scales linearly per the settings below.,0.1,1,Hacking
 hackCrChanceBase,Hack CR base bonus,Double,0.1,,Progress bonus when target CR equals the threshold (70%%); 0.1 = each progress tick gains an extra 10%%.,0,1,Hacking

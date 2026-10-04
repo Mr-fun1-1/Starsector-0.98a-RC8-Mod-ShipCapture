@@ -36,7 +36,7 @@
     "captureRepairCount": 40,
     "hackCooldownBaseSec": 5.0,
     "boardingEngageRange": 4000.0,
-    "hackOmegaAllowed": true,
+    "hackOmegaAllowed": false,
     "arrayOpFrigate": 8,
     "wingBaseValue": 20000,
     "wingOpCost": 15,

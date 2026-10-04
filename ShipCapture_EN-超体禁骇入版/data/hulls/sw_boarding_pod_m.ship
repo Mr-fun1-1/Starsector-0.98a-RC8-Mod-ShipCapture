@@ -1,0 +1,71 @@
+{
+    "bounds": [
+        15,
+        15,
+        -12,
+        -12,
+        -12,
+        15,
+        16,
+        -12,
+        6,
+        0
+    ],
+    "center": [
+        22,
+        26
+    ],
+    "collisionRadius": 22,
+    "coversColor": "",
+    "engineSlots": [
+        {
+            "angle": 180,
+            "contrailSize": 80,
+            "length": 24,
+            "location": [
+                -19,
+                9
+            ],
+            "style": "HIGH_TECH",
+            "width": 5
+        },
+        {
+            "angle": 180,
+            "contrailSize": 80,
+            "length": 24,
+            "location": [
+                -19,
+                -9
+            ],
+            "style": "HIGH_TECH",
+            "width": 5
+        }
+    ],
+    "height": 52,
+    "hullId": "sw_boarding_pod_m",
+    "hullName": "Medium Boarding Fighter",
+    "hullSize": "FIGHTER",
+    "shieldCenter": [
+        2,
+        0
+    ],
+    "shieldRadius": 30,
+    "spriteName": "graphics/ships/sw_boarding_pod_m.png",
+    "style": "HIGH_TECH",
+    "viewOffset": 0,
+    "weaponSlots": [
+        {
+            "angle": 0,
+            "arc": 360,
+            "id": "WS 001",
+            "locations": [
+                2,
+                0
+            ],
+            "mount": "HIDDEN",
+            "size": "SMALL",
+            "type": "ENERGY"
+        }
+    ],
+    "width": 45
+}

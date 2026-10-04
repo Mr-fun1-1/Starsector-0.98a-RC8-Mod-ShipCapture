@@ -1,0 +1,19 @@
+{
+    "displayName": "Medium Boarding Fighter",
+    "hullId": "sw_boarding_pod_m",
+    "variantId": "sw_boarding_pod_m_wing",
+    "fluxVents": 0,
+    "fluxCapacitors": 0,
+    "hullMods": [
+        "sw_boarding_pod",
+        "no_weapon_flux"
+    ],
+    "weaponGroups": [
+        {
+            "mode": "LINKED",
+            "weapons": {
+                "WS 001": "lightmg"
+            }
+        }
+    ]
+}

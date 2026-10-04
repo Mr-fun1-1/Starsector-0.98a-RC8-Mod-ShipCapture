@@ -1,0 +1,12 @@
+{
+  "id": "sw_capture",
+  "name": "夺取舰船",
+  "author": "Doubao",
+  "version": "2.0.0",
+  "description": "通过骇入与跳帮夺取敌方舰船：骇入阵列夺取无人舰，跳帮舱连队夺取有人舰，跳帮驱动核心触发电子干扰故障。被夺取舰船战斗结束后直接加入玩家舰队。",
+  "gameVersion": "0.98a-RC8",
+  "jars": [
+    "jars/Capture.jar"
+  ],
+  "modPlugin": "org.sw.capture.ModPlugin"
+}
