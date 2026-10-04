@@ -3,10 +3,10 @@ Added fighter squadrons and hull mods that can take control of enemy ships
 
 警告：本模组各数值及其影响平衡，强烈建议先在 Mod Settings 内调整至自己可接受的数值，
 使用本模组请在进入战斗后注意及时退出舰队指挥窗口（TAB或ESC），至少进入过一次战斗地图，然后便可随意在指挥窗口或战斗地图继续战斗。否则会出现bug：夺取计数满的舰船跳过过渡期、瞬间加入玩家阵营。
+Warning: The values and their effects in this mod may disrupt game balance. It is strongly recommended to adjust them to your preferred levels first in the Mod Settings. When using this mod, make sure to exit the fleet command window (TAB or ESC) promptly after entering combat. You must enter a battle map at least once before you can freely continue fighting either in the command window or on the battle map. Otherwise, a bug may occur: ships with full capture counters will skip the transition period and instantly join the player's faction.
 
 通过骇入与跳帮夺取敌方舰船操控权：
 骇入阵列（船体插件）：锁定无人舰（余晖自动舰/无人机船）持续骇入，进度满后夺取操控权；
-骇入开关：Mod Settings 内可开启骇入超体类（Tesseract/欧米伽）舰船，默认关闭；
 跳帮舱（战机连队）：接触有人舰累计跳帮计数，计数满后夺取操控权；
 跳帮驱动核心（船体插件）：触发跳帮侧电子干扰故障（引擎/武器/护盾）；
 目标被击毁时按累计跳帮计数释放一次性跳帮战机继续夺舰；
