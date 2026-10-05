@@ -36,7 +36,7 @@
     "hackCooldownBaseSec": 5.0,
     "boardingEngageRange": 4000.0,
     "ghostReturnFrac": 0.5,
-    "hackOmegaAllowed": false,
+    "hackOmegaAllowed": true,
     "arrayOpFrigate": 8,
     "wingBaseValue": 20000,
     "wingOpCost": 15,
@@ -99,6 +99,7 @@
     "boardCrMaxChance": 0.5,
     "boardCrIntervalSec": 3.0,
     "boardMarinesEnabled": true,
+    "boardMarinesShortfallMult": 0.5,
     "arcRenderEnabled":false,
     "arcAlpha": 0,
   }

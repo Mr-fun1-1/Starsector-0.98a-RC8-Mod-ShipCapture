@@ -99,6 +99,7 @@
     "boardCrMaxChance": 0.5,
     "boardCrIntervalSec": 3.0,
     "boardMarinesEnabled": true,
+    "boardMarinesShortfallMult": 0.5,
     "arcRenderEnabled":false,
     "arcAlpha": 0,
   }

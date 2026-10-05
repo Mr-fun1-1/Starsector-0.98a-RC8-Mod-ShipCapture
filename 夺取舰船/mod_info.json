@@ -1,7 +1,7 @@
 {
   "id": "sw_capture",
   "author": "Mr_fun1_1",
-  "version": "3.0.0",
+  "version": "3.0.2",
   "gameVersion": "0.98a-RC8",
   "jars": [
     "jars/Capture.jar"
@@ -10,7 +10,7 @@
   "dependencies": [
     {
       "id": "lunalib",
-      "name": "夺取舰船",
+      "name": "LunaLib",
       "version": "2.0.4"
     }
   ],
