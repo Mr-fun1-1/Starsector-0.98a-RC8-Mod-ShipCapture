@@ -34,6 +34,7 @@ boardCrMaxCr,Boarding CR chance cap CR,Double,0.3,,CR at and below which the cha
 boardCrMaxChance,Boarding CR max chance,Double,0.5,,Maximum chance at the cap CR (0.5 = 50%%).,0.1,1,Boarding
 boardCrIntervalSec,Boarding CR roll interval,Double,3,,Seconds between extra-hit chance rolls while target CR is below the threshold.,0.5,30,Boarding
 boardMarinesEnabled,Boarding consumes marines,Boolean,true,,Boarding fighters consume marines from the player cargo on successful contact (Light 5 / Medium 10 / Heavy 20; default ON; sims and one-shot fighters exempt).,,,,Boarding
+boardMarinesShortfallMult,Marine Shortfall Coefficient,Double,0.5,,When marine consumption is enabled and a contact would consume marines but the cargo hold is short, that contact's boarding-count gain is multiplied by this coefficient (default 0.5; fractional counts are possible; floaters show progress as a percentage).,0.05,1,Boarding
 wingBaseValue,Wing market value,Int,20000,,Market value of the Light Boarding Fighter fighter wing (price; applies after restarting the game).,1000,100000,Boarding
 wingOpCost,Wing ordnance points,Int,15,,Ordnance points to equip a Light Boarding Fighter wing on a carrier (applies after restarting the game).,0,100,Boarding
 wingFighterCount,Fighters per wing,Int,3,,Number of fighters per Light Boarding Fighter wing (applies after restarting the game).,1,6,Boarding
@@ -77,29 +78,29 @@ presetSlot3,Slot 3 selected,Boolean,false,,Enable to select slot 3 (if multiple 
 presetSlot4,Slot 4 selected,Boolean,false,,Enable to select slot 4 (if multiple slots are ON, the lowest-numbered one is used).,,,,Preset Slots
 presetSlot5,Slot 5 selected,Boolean,false,,Enable to select slot 5 (if multiple slots are ON, the lowest-numbered one is used).,,,,Preset Slots
 useCustomFighterSprite,Fighter Sprite Replace,Boolean,true,,When enabled (default), the Light Boarding Fighter fighter uses this mod custom pixel sprite; when disabled, it uses the vanilla Wasp fighter sprite.,,,,Boarding
-wingMBaseValue,Medium fighter market value,Int,43000,,Market value of the Medium Boarding Fighter wing (restart to apply).,1000,300000,跳帮
-wingMOpCost,Medium fighter OP cost,Int,18,,OP cost to fit a Medium Boarding Fighter wing (restart to apply).,0,100,跳帮
-wingMNum,Medium fighters per wing,Int,3,,Fighters per Medium Boarding Fighter wing (restart to apply).,1,6,跳帮
-wingMMaxSpeed,Medium fighter max speed,Int,250,,Max speed of the Medium Boarding Fighter (instant).,50,1000,跳帮
-wingMAcceleration,Medium fighter accel,Int,200,,Acceleration of the Medium Boarding Fighter (instant).,50,2000,跳帮
-wingMDeceleration,Medium fighter decel,Int,160,,Deceleration of the Medium Boarding Fighter (instant).,50,2000,跳帮
-wingMMinCrew,Medium fighter min crew,Int,3,,Minimum crew of the Medium Boarding Fighter (restart to apply).,1,50,跳帮
-wingMRefit,Medium wing refit time,Int,10,,Refit (resupply) time of the Medium wing (restart to apply).,1,60,跳帮
-wingMHitpoints,Medium fighter hull,Int,500,,Hull of the Medium Boarding Fighter (instant).,50,8000,跳帮
-wingMArmor,Medium fighter armor,Int,115,,Armor of the Medium Boarding Fighter (instant).,10,3000,跳帮
-wingMFluxCap,Medium fighter flux cap,Int,600,,Flux capacity of the Medium Boarding Fighter (instant).,50,8000,跳帮
-wingMFluxDiss,Medium fighter flux diss,Int,50,,Flux dissipation of the Medium Boarding Fighter (instant).,10,1000,跳帮
-wingHBaseValue,Heavy fighter market value,Int,80000,,Market value of the Heavy Boarding Fighter wing (restart to apply).,1000,500000,跳帮
-wingHOpCost,Heavy fighter OP cost,Int,25,,OP cost to fit a Heavy Boarding Fighter wing (restart to apply).,0,100,跳帮
-wingHNum,Heavy fighters per wing,Int,2,,Fighters per Heavy Boarding Fighter wing (restart to apply).,1,6,跳帮
-wingHMaxSpeed,Heavy fighter max speed,Int,200,,Max speed of the Heavy Boarding Fighter (instant).,50,1000,跳帮
-wingHAcceleration,Heavy fighter accel,Int,110,,Acceleration of the Heavy Boarding Fighter (instant).,50,2000,跳帮
-wingHDeceleration,Heavy fighter decel,Int,100,,Deceleration of the Heavy Boarding Fighter (instant).,50,2000,跳帮
-wingHMinCrew,Heavy fighter min crew,Int,6,,Minimum crew of the Heavy Boarding Fighter (restart to apply).,1,60,跳帮
-wingHRefit,Heavy wing refit time,Int,15,,Refit (resupply) time of the Heavy wing (restart to apply).,1,60,跳帮
-wingHHitpoints,Heavy fighter hull,Int,2000,,Hull of the Heavy Boarding Fighter (instant).,50,15000,跳帮
-wingHArmor,Heavy fighter armor,Int,400,,Armor of the Heavy Boarding Fighter (instant).,10,5000,跳帮
-wingHFluxCap,Heavy fighter flux cap,Int,1000,,Flux capacity of the Heavy Boarding Fighter (instant).,50,10000,跳帮
-wingHFluxDiss,Heavy fighter flux diss,Int,50,,Flux dissipation of the Heavy Boarding Fighter (instant).,10,1000,跳帮
+wingMBaseValue,Medium fighter market value,Int,43000,,Market value of the Medium Boarding Fighter wing (restart to apply).,1000,300000,Boarding
+wingMOpCost,Medium fighter OP cost,Int,18,,OP cost to fit a Medium Boarding Fighter wing (restart to apply).,0,100,Boarding
+wingMNum,Medium fighters per wing,Int,3,,Fighters per Medium Boarding Fighter wing (restart to apply).,1,6,Boarding
+wingMMaxSpeed,Medium fighter max speed,Int,250,,Max speed of the Medium Boarding Fighter (instant).,50,1000,Boarding
+wingMAcceleration,Medium fighter accel,Int,200,,Acceleration of the Medium Boarding Fighter (instant).,50,2000,Boarding
+wingMDeceleration,Medium fighter decel,Int,160,,Deceleration of the Medium Boarding Fighter (instant).,50,2000,Boarding
+wingMMinCrew,Medium fighter min crew,Int,3,,Minimum crew of the Medium Boarding Fighter (restart to apply).,1,50,Boarding
+wingMRefit,Medium wing refit time,Int,10,,Refit (resupply) time of the Medium wing (restart to apply).,1,60,Boarding
+wingMHitpoints,Medium fighter hull,Int,500,,Hull of the Medium Boarding Fighter (instant).,50,8000,Boarding
+wingMArmor,Medium fighter armor,Int,115,,Armor of the Medium Boarding Fighter (instant).,10,3000,Boarding
+wingMFluxCap,Medium fighter flux cap,Int,600,,Flux capacity of the Medium Boarding Fighter (instant).,50,8000,Boarding
+wingMFluxDiss,Medium fighter flux diss,Int,50,,Flux dissipation of the Medium Boarding Fighter (instant).,10,1000,Boarding
+wingHBaseValue,Heavy fighter market value,Int,80000,,Market value of the Heavy Boarding Fighter wing (restart to apply).,1000,500000,Boarding
+wingHOpCost,Heavy fighter OP cost,Int,25,,OP cost to fit a Heavy Boarding Fighter wing (restart to apply).,0,100,Boarding
+wingHNum,Heavy fighters per wing,Int,2,,Fighters per Heavy Boarding Fighter wing (restart to apply).,1,6,Boarding
+wingHMaxSpeed,Heavy fighter max speed,Int,200,,Max speed of the Heavy Boarding Fighter (instant).,50,1000,Boarding
+wingHAcceleration,Heavy fighter accel,Int,110,,Acceleration of the Heavy Boarding Fighter (instant).,50,2000,Boarding
+wingHDeceleration,Heavy fighter decel,Int,100,,Deceleration of the Heavy Boarding Fighter (instant).,50,2000,Boarding
+wingHMinCrew,Heavy fighter min crew,Int,6,,Minimum crew of the Heavy Boarding Fighter (restart to apply).,1,60,Boarding
+wingHRefit,Heavy wing refit time,Int,15,,Refit (resupply) time of the Heavy wing (restart to apply).,1,60,Boarding
+wingHHitpoints,Heavy fighter hull,Int,2000,,Hull of the Heavy Boarding Fighter (instant).,50,15000,Boarding
+wingHArmor,Heavy fighter armor,Int,400,,Armor of the Heavy Boarding Fighter (instant).,10,5000,Boarding
+wingHFluxCap,Heavy fighter flux cap,Int,1000,,Flux capacity of the Heavy Boarding Fighter (instant).,50,10000,Boarding
+wingHFluxDiss,Heavy fighter flux diss,Int,50,,Flux dissipation of the Heavy Boarding Fighter (instant).,10,1000,Boarding
 arcRenderEnabled,Progress arc rendering,Boolean,False,,Show boarding/hack progress as a colored arc around the target ship (OFF, default); when OFF, progress floating-text is restored.,,,,General
 arcAlpha,Arc opacity,Int,0,,Arc opacity: 0 = opaque (default), 255 = fully transparent. Applies to both the grey base ring and the colored arc.,0,255,General

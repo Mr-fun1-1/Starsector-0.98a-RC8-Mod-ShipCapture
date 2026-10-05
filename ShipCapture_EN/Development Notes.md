@@ -111,7 +111,7 @@ Campaign layer:
 - Lesson: keep column count and header consistent when editing data tables; cost fields must be numbers; id fields cannot be empty; CSV `#` comment lines go above the header, not in the data area.
 
 **4. Hullmod description text crashes on mouse hover**
-- Symptom: game runs, hovering a hullmod crashes, `Fatal: Conversion ='以"` / `Fatal: Conversion='时'`.
+- Symptom: game runs, hovering a hullmod crashes with Fatal: Conversion errors (single Chinese characters quoted in the log).
 - Root cause: desc text contains character sequences the engine treats as escapes/formatting.
 - Fix: rewrote the desc following the style of the working "Hacking Array" hullmod description; avoid special characters.
 - Lesson: hullmod desc text must be conservative - no English quotes, no bare `%`, no sequences that could be interpreted.
@@ -201,7 +201,7 @@ Campaign layer:
 ### 3.5 Toolchain lessons (build/deploy)
 
 - `javac` on Windows does not expand `*.java` wildcards, and PowerShell does not auto-split a single string with spaces - use an array argument `@(Get-ChildItem ... | ForEach-Object FullName)` with `& javac ... @srcs`.
-- Bilingual dual-jar workflow: `src` (Chinese) -> copy to `src_en` -> run `en_floats.py` (replaces user-visible strings such as floating text with English) -> compile and package separately; the Chinese jar deploys to `mods\夺取舰船` and `mods备份\夺取舰船` (the two MD5s must match), the English jar goes to `mods备份\ShipCapture_EN`.
+- Bilingual dual-jar workflow: `src` (ZH) -> copy to `src_en` -> run `en_floats.py` (replaces user-visible strings such as floating text with English) -> compile and package separately; the ZH jar deploys to the live ZH mod folder and its backup copy (the two MD5s must match), the EN jar goes to the `ShipCapture_EN` backup folder.
 - Verification with `VerifyCapture.java` (key class tag check) under the game jre: `java -cp "capture_dev;Capture.jar;core cp" VerifyCapture <jar path>`.
 - All data files (CSV/JSON/text) are UTF-8 without BOM; PowerShell's `Get-Content` decodes as ANSI by default, so Chinese mojibake in console output is normal and does not mean the file is corrupted.
 
@@ -334,7 +334,7 @@ This mod referenced the code and data organization of the following mods during 
   a Header row (fieldName equal to the tab name, e.g. "Preset Slots") renders as a tree entry, and the field rows' tab grouping renders another entry -> the same tab name shows twice.
 - Fix: **removed the cap_header_general and cap_header_presets Header rows** (the 4 Header rows from v2.1.0 have fieldName != tab and work fine, so they stay);
   enemyCanUse's tab changed from "General & Presets" to "Preset Slots" (English "Preset Slots"), and the "General & Presets" tab disappears with the Header rows.
-- Slot toggle naming: `存档槽位x选取状态` -> `存档槽位x选取` (English stays "Slot N selected").
+- Slot toggle naming: `Slot N selected` (Chinese labels only, irrelevant to EN).
 
 ### Preset toggles fixed to OFF
 - Requirement: saving a preset must **not** save the ON/OFF state of "Save preset", "Load preset", and "Slot N selected"; they are fixed to OFF.
@@ -349,7 +349,7 @@ This mod referenced the code and data organization of the following mods during 
 - LunaSettings.csv (three ZH/EN copies): deleted 2 Header rows, enemyCanUse tab changed, slot toggles renamed;
 - mod_info.json version 2.2.0 -> 2.2.2;
 - Capture.jar: the Chinese dual-directory MD5s match (AE69EA4D93E8D85EA055AE6DB349B134), the English one is independent;
-- 使用说明 / README synced.
+- ZH user guide / README synced.
 
 ## 9. Custom Boarding Pod sprite + sprite-swap toggle (version unchanged; extra feature on 2.2.2)
 
@@ -401,9 +401,9 @@ This mod referenced the code and data organization of the following mods during 
 2. **Boarding consumes marines**: HijackUtil new `marinesFor()` (Light 5 / Medium 10 / Heavy 20) and `consumeMarines()` (player side only, owner=0, requires cargo, skipped in simulation battles, one-shot fighters exempt); called on BoardingPod touch, toggle `boardMarinesEnabled`.
 3. **Hack-side CR/overload bonus**: CaptureArray hack rate `rate = rate * (1 + HijackUtil.crFactor(target))`, extra +`hackOverloadExtra` while overloaded (toggle `hackOverloadEnabled`); new `progressSnapshot()` public static snapshot for arc rendering.
 4. **Progress arc rendering**: CaptureCombatPlugin overrides `renderInWorldCoords` + `drawProgressArc` (GL11 lines: gray full circle + colored arc, boarding orange / hacking cyan, radius = collision radius + 34, line width 9/viewMult, 72 segments, clockwise from -pi/2); toggle `arcRenderEnabled`; when ON, boarding/hack progress floating text is hidden.
-5. **Capture blacklist**: HijackUtil new `BLACKLIST_FILE_NAME=夺取黑名单.txt` (later renamed, see 10.2), `reloadBlacklist()`, `isBlacklisted()` (# comments / blank lines ignored); blacklist excludes both hacking (CaptureArray.validHackTarget) and boarding (HijackUtil.isValidTarget, captureShip interception); ModPlugin loads at startup + reloads on configReloaded each battle; file created in all three mod roots.
+5. **Capture blacklist**: HijackUtil new `BLACKLIST_FILE_NAME` (originally the ZH-named file, later renamed, see 10.2), `reloadBlacklist()`, `isBlacklisted()` (# comments / blank lines ignored); blacklist excludes both hacking (CaptureArray.validHackTarget) and boarding (HijackUtil.isValidTarget, captureShip interception); ModPlugin loads at startup + reloads on configReloaded each battle; file created in all three mod roots.
 6. **Battle-end backstop**: HijackUtil new `tickBattleEndBackstop(engine, amount)` (enemy's surviving deployed ships zero for 10 s -> enemy fleet orderFullRetreat), BACKSTOP_DELAY=10f, BACKSTOP_TIMER weak-referenced by engine instance; called every frame by CaptureCombatPlugin.advance (while the battle is not over). References the enemyTimer backstop idea from *Boarding Attack*'s RC_MonsterBallEveryFrameCombatPlugin.
-7. **Config system**: CaptureConfig adds 13 fields (hackCr* 6 + boardCr* 6 + arcRenderEnabled) with applyFrom/loadFromLuna synced; three modSettings.json copies get 13 new keys; three LunaSettings.csv copies get 13 new rows (Hack tab 6 / Board tab 6 / General tab 1; English copy adds English rows + trailing arcRenderEnabled). **Note**: in the English LunaSettings the Heavy slider tab column still contains the Chinese "跳帮" (legacy), not cleaned.
+7. **Config system**: CaptureConfig adds 13 fields (hackCr* 6 + boardCr* 6 + arcRenderEnabled) with applyFrom/loadFromLuna synced; three modSettings.json copies get 13 new keys; three LunaSettings.csv copies get 13 new rows (Hack tab 6 / Board tab 6 / General tab 1; English copy adds English rows + trailing arcRenderEnabled). **Note**: the English LunaSettings once kept a Chinese tab label for the Heavy sliders (legacy), fixed in 3.0.2.
 8. **Version**: 2.2.2 -> 3.0.0; mod_info.json description updated with new mechanics and the warning; credits added *Boarding Attack* (zouyx).
 
 ### Pitfall records (for future developers)
@@ -429,9 +429,9 @@ This mod referenced the code and data organization of the following mods during 
 
 ### 10.2 Blacklist file rename (pre-release consistency)
 
-- Reason: the blacklist file was originally named in Chinese (《夺取黑名单.txt》), awkward for English environments and forum docs.
+- Reason: the blacklist file was originally named in Chinese (a bracketed ZH title), awkward for English environments and forum docs.
 - Changes: code constant `BLACKLIST_FILE_NAME` -> `capture_blacklist.txt` (ZH/EN sources synced); file renamed in all three roots;
-  使用说明 (ZH official+backup), README (EN), mod_info.json (ZH/EN description) synced; the forum post FAQ already used the English name.
+  ZH user guide (official + backup), README (EN), mod_info.json (ZH/EN description) synced; the forum post FAQ already used the English name.
 - Note: the rename must touch **the code constant + the file + all docs** together; renaming only the file with the code unchanged silently breaks the blacklist (it just fails to load).
 
 ### 10.3 Progress arc rendering: final conclusion (floating text is the default)
@@ -443,7 +443,7 @@ This mod referenced the code and data organization of the following mods during 
 
 ### 10.4 Zip naming convention
 
-- Chinese version `夺取舰船_vX.Y.Z.zip`; English version `ShipCapture_EN_vX.Y.Z.zip` - **the English package name must not contain Chinese**.
+- ZH package `ShipCapture_ZH_vX.Y.Z.zip` (Chinese text only inside the archive); EN package `ShipCapture_EN_vX.Y.Z.zip` - **the EN package name must not contain Chinese**.
 - The pack script (swbuild/pack_37.py) output names are synced; it excludes .xlsx / presets saves / forum_post_bbcode.txt; after repacking it runs testzip + CSV no-BOM + jar checks.
 ### 10.5 Tesseract/Omega hijack failure (post-v3.0.0 fix, 2026-10)
 
@@ -462,8 +462,8 @@ This mod referenced the code and data organization of the following mods during 
   - Omega-Allowed version (A): modSettings.json hackOmegaAllowed=true; LunaSettings.csv drops the "allow hijacking Tesseract/Omega" toggle row (always allowed, no UI needed), keeps the "Omega speed multiplier" slider (adjustable, default 0.5).
   - Omega-Banned version (B): modSettings.json hackOmegaAllowed=false; LunaSettings.csv drops both the toggle row and the speed multiplier row (Omega fully excluded).
   - Code is identical in both versions: CaptureConfig.loadFromLuna() NO LONGER reads LunaLib's hackOmegaAllowed (version-fixed) - the old-save override can never interfere again; HACK_OMEGA_ALLOWED comes only from modSettings.json.
-- Packages: 夺取舰船_超体可骇入版_v3.0.0.zip / 夺取舰船_超体禁骇入版_v3.0.0.zip / ShipCapture_EN_OmegaAllowed_v3.0.0.zip / ShipCapture_EN_OmegaBanned_v3.0.0.zip (English names contain no Chinese, per naming rule).
-- Layout: live mods\夺取舰船 = Omega-Allowed (A); mods备份\夺取舰船 / mods备份\ShipCapture_EN = A; mods备份\夺取舰船-超体禁骇入版 / mods备份\ShipCapture_EN-超体禁骇入版 = B.
+- Packages: ShipCapture_ZH_OmegaAllowed_v3.0.0.zip / ShipCapture_ZH_OmegaBanned_v3.0.0.zip / ShipCapture_EN_OmegaAllowed_v3.0.0.zip / ShipCapture_EN_OmegaBanned_v3.0.0.zip (English names contain no Chinese, per naming rule).
+- Layout: live ZH mod folder = Omega-Allowed (A); ZH backup / ShipCapture_EN backup = A; the B-build ZH backups (Omega banned) = B.
 - Hijack speed formula (reference for future tuning):
   progress/sec = HACK_BASE_RATE x EW-factor x size-factor x stack-factor x omega-factor x (1 + CR/overload-bonus)
   - EW-factor = clamp(1 + (myEW - enemyEW) x EW_MULT_PER_POINT, EW_MULT_MIN, EW_MULT_MAX)
@@ -478,10 +478,32 @@ This mod referenced the code and data organization of the following mods during 
 - Decision (user instruction): roll A back to the logic that was battle-verified to hijack the Tesseract (first-fix version); make B exclude Omega explicitly in code. The A and B jars are now CODE-DIFFERENT (no longer data-only):
   - A (Omega-allowed): if (isUnmanned(t)) return true; return HACK_OMEGA_ALLOWED && isOmega(t); - the Tesseract is let through unconditionally via isUnmanned (automated), with the isOmega branch as a fallback (HACK_OMEGA_ALLOWED fixed true in this version).
   - B (Omega-banned): if (isOmega(t) || isUnboardable(t)) return false; return isUnmanned(t); - Omega excluded with DOUBLE assurance: isOmega by hull/variant id, and isUnboardable by the vanilla UNBOARDABLE tag (verified present on the 0.98a Tesseract in ship_data.csv). Normal unmanned ships (Remnant/derelict drones) are unaffected.
-- Build/deploy: 4 jars compiled (A/B x ZH/EN; hashes A-ZH=5FDB7C8F / B-ZH=D30759D9 / A-EN=D096353E / B-EN=6FAEAA73); live mods\夺取舰船 = A; each backup dir gets its matching jar; all 4 zips rebuilt and verified (testzip OK, in-zip jar hashes match deployed).
+- Build/deploy: 4 jars compiled (A/B x ZH/EN); live ZH folder = A; each backup dir gets its matching jar; all 4 zips rebuilt and verified (testzip OK, in-zip jar hashes match deployed).
 - Lesson: whether the Tesseract can be hijacked must be decided by battle testing - inferences about automated hullmods or variant ids may not match reality. Shipping two deterministic semantics (always allow / always exclude) is more robust than one runtime toggle over an uncertain check. The vanilla UNBOARDABLE tag is a reliable discriminator for the Omega class and is used as B's second check.
 ### 10.8 Version bump to 3.0.1（2026-10）
 
-- The A (Omega-allowed) and B (Omega-banned) versions both passed playtesting，版本号由 3.0.0 升至 3.0.1（补丁版本：超体骇入双版本化修复）。
+- The A (Omega-allowed) and B (Omega-banned) versions both passed playtesting; version bumped 3.0.0 -> 3.0.1 (patch: Omega-hacking dual-build fix).
 - Updated: 5 mod_info.json files (live ZH A, backup ZH A/B, backup EN A/B) to version=3.0.1; all 4 zips rebuilt and verified (testzip OK, in-zip mod_info version=3.0.1, jar hashes match deployed: A-ZH=5FDB7C8F / B-ZH=D30759D9 / A-EN=D096353E / B-EN=6FAEAA73).
 - Old v3.0.0 zips kept (user backup habit, managed by user).
+
+
+### 10.9 v3.0.2: Marine-shortfall linkage + float counts + percentage floaters + full English localization (2026-10)
+
+- Requirement (user): link the "boarding fighters consume marines" mechanic to boarding counts - with marine consumption enabled (default on), if a boarding contact "would consume marines" but the cargo hold is short, that contact's final count gain is multiplied by the Marine Shortfall Coefficient (default 0.5, adjustable slider); the first shortfall of each battle shows the in-battle message "Not enough marines! Boarding efficiency reduced." (modeled on the vanilla "deployed long; readiness will drop" hint, engine.getCombatUI().addMessage).
+- Implementation:
+  - HijackUtil.BOARDING_HITS / LAST_HINT_HITS changed from Map<ShipAPI,Integer> to Map<ShipAPI,Float> (the coefficient can produce fractional counts);
+  - consumeMarines now returns boolean (short = cargo < need; deducts what is left, does not block the boarding; non-player / no cargo / toggle off return false); added warnMarineShortfall() (combat engine customData, first-time per battle);
+  - BoardingPod on successful contact: if consumeMarines reports a shortfall, effectiveGain = gain x CaptureConfig.MARINE_SHORT_MULT;
+  - Boarding floaters now show percentage progress: String.format(Locale.ROOT, "Boarding %.2f%%", pct) (current count / total needed x 100%, 2 decimals) - no messy fractional integers;
+  - CaptureConfig adds MARINE_SHORT_MULT = 0.5 (LunaLib slider boardMarinesShortfallMult, range 0.05~1).
+- Data: the live ZH-A LunaSettings.csv gains the boardMarinesShortfallMult row (Boarding tab) and modSettings.json a default 0.5; all 4 backup dirs synced (EN copies use English descriptions).
+- Build/deploy: ZH A/B recompiled (src_b had MISSED the v3.0.2 file sync - fixed by copying the latest HijackUtil/BoardingPod/CaptureConfig/BoardingDriver from src into src_b); EN A/B recompiled. 4 jars, 5 dirs deployed, 4 v3.0.2 zips rebuilt and verified (testzip OK, in-zip jar hashes match deployed: A-ZH=DF923909 / B-ZH=23BD9268 / A-EN=E09D0B05 / B-EN=6CAADC2C).
+- Version: 5 mod_info.json files -> 3.0.2; the four v3.0.1 zips moved to the old-version archive folder.
+- **Full EN localization (user requirement: NO Chinese anywhere in the EN builds, including all code comments)**:
+  - New en_localize.py + 8 translation-map shards (en_map_1~8.json, covering all 16 Java files), whole-line matching replaces every Chinese line in src_en / src_en_b (keys must match file lines byte-for-byte including indentation);
+  - Key runtime strings translated accurately: "Boarding %.2f%%", "Not enough marines! Boarding efficiency reduced.", "Hacking X%", "Hack chain +X%", etc.;
+  - Then purged Chinese leftovers from EN data/doc files: LunaSettings.csv tab label (24 rows), ship_data.csv design type "Unique", sw_boarding_pod.ship hullName -> "Boarding Pod", blacklist file header comments, README title, and Chinese path/history references inside the development notes.
+- Lessons:
+  - Localizing code comments needs whole-line map + per-line verification, never keyword replacement: every JSON key must equal the file line (indentation included) to hit; Java-quoted strings inside JSON keys/values need correct escaping (escaped quote followed by the string's closing quote).
+  - Cross-directory syncs must be verified against the actual file content, not trusted from "already synced" records: src_b's HijackUtil was still the pre-v3.0.2 version (Integer map / void consumeMarines) while src had the new one; found by comparing after compile, fixed by re-copying the latest files.
+  - javac on a Chinese Windows emits GBK-encoded stderr; capture subprocess output and decode with GBK (UTF-8 decoding throws UnicodeDecodeError).

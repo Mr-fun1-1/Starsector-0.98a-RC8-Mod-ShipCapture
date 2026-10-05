@@ -1,6 +1,5 @@
-# 《夺取黑名单》
-# 每行填写一个舰船的 hull id（数据文件中的 id，如 ship_data.csv 第 2 列）。
-# 列出的舰船将不可被「骇入阵列」骇入、不可被「跳帮舱」跳帮夺取（索敌与夺取入口双重排除）。
-# 以 # 开头的行是注释，空行忽略。修改后重启游戏生效。
-# 示例（取消注释即可生效）：
-#ziggurat
+# Ship Capture Blacklist
+# One hull id per line (the id in the data files, e.g. column 2 of ship_data.csv).
+# Listed ships cannot be hacked by the Hack Array or captured by Boarding Pods (excluded from both targeting and capture).
+# Lines starting with # are comments; blank lines are ignored. Restart the game for changes to take effect.
+# Example (uncomment to enable):
